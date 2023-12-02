@@ -34,7 +34,7 @@ class LoadingRepo with VSharedPref {
     }
     final firstShowF = (await prefs).getBool(fs);
     if (firstShowF != null) {
-      controller.add(VLoading.finanseModeFalse); // true
+      controller.add(VLoading.finanseModeTrue); // true
     } else {
       final x = await LoadingApiClient.validateSesion(
           errorController: errorController,

@@ -29,7 +29,8 @@ class TermsTest extends StatelessWidget {
               previous.model.testModel != current.model.testModel,
           builder: (context, state) {
             return Padding(
-              padding: const EdgeInsets.only(top: 50),
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height < 700 ? 10 : 50),
               child: Column(children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -68,7 +69,8 @@ class TermsTest extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(
+                    height: MediaQuery.of(context).size.height < 700 ? 5 : 10),
                 SizedBox(
                   height: 15,
                   child: Padding(
@@ -85,7 +87,8 @@ class TermsTest extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                SizedBox(
+                    height: MediaQuery.of(context).size.height < 700 ? 5 : 12),
                 Expanded(
                   child: TestPageView(
                     terms: state.model.testModel.terms,
@@ -312,7 +315,7 @@ class _SheetItems extends StatelessWidget {
         child: InkWell(
           onTap: func,
           child: SizedBox(
-            height: 52,
+            height: MediaQuery.of(context).size.height < 700 ? 48 : 52,
             child: DecoratedBox(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),

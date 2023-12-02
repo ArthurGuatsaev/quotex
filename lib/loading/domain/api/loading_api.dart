@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
+import 'package:quotex/const/strings.dart';
 
 class LoadingApiClient {
   static Future<int> validateSesion(
@@ -16,7 +17,7 @@ class LoadingApiClient {
         ),
       );
       final response = await x.post(
-        'https://weretek.space/app/bintradecll1lub2',
+        'https://$zaglushka',
         data: {
           'vivisWork': isVpn,
           'poguaKFP': udid,

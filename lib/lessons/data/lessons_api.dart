@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:quotex/const/strings.dart';
 import 'package:quotex/lessons/domain/model/lesson.dart';
 
 class LessonApiClient {
@@ -12,7 +13,7 @@ class LessonApiClient {
         receiveTimeout: const Duration(seconds: 7),
       ));
       final response = await x.get(
-          'https://weretek.space/api/v2/lessons/?lang=en&token=b19fa3ad-b80f-49c9-9178-00a64cf5b57c');
+          'https://$apiDomain/api/v2/lessons/?lang=en&token=b19fa3ad-b80f-49c9-9178-00a64cf5b57c');
       if (response.statusCode == 200) {
         final lessons = response.data!['results'] as List<dynamic>;
         final newLesson =

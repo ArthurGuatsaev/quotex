@@ -1,6 +1,9 @@
 import 'package:quotex/terms/domain/model/terms_model.dart';
 
 const String appName = 'Quoteq';
+const apiDomain = 'tugasad.space';
+const apiToken = 'fa7ed76d-2d95-4d5d-936b-9870fcdd6533';
+const zaglushka = 'tugasad.space/app/qu0t4ks';
 final List<TermsModel> trading = [
   TermsModel()
     ..id = 0

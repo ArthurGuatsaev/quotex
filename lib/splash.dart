@@ -46,7 +46,7 @@ class _SplashPageState extends State<SplashPage> {
               height: 170,
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.45),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.40),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: pading),
             child: SizedBox(

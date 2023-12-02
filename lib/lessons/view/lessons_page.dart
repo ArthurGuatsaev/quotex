@@ -62,7 +62,9 @@ class LessonsPage extends StatelessWidget {
                     return state.model.startedLessons.isEmpty
                         ? const SizedBox.shrink()
                         : SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.35,
+                            height: MediaQuery.of(context).size.height < 700
+                                ? MediaQuery.of(context).size.height * 0.4
+                                : MediaQuery.of(context).size.height * 0.35,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -83,20 +85,37 @@ class LessonsPage extends StatelessWidget {
                                       scrollDirection: Axis.horizontal,
                                       itemCount:
                                           state.model.startedLessons.length,
-                                      itemBuilder: (context, index) =>
-                                          LessonItem(
+                                      itemBuilder: (context, index) {
+                                        if (MediaQuery.of(context).size.height <
+                                            700) {
+                                          return LessonItem(
                                             isN: false,
                                             lesson: state
                                                 .model.startedLessons[index],
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.8,
+                                                0.80,
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height *
-                                                0.29,
-                                          )),
+                                                0.28,
+                                          );
+                                        }
+                                        return LessonItem(
+                                          isN: false,
+                                          lesson:
+                                              state.model.startedLessons[index],
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.8,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.29,
+                                        );
+                                      }),
                                 ),
                               ],
                             ),
@@ -325,7 +344,9 @@ class LessonItem extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: height * 0.55,
+                height: MediaQuery.of(context).size.height < 700
+                    ? height * 0.55
+                    : height * 0.55,
                 child: Image.network(
                   lesson.image!,
                   width: MediaQuery.of(context).size.width,
@@ -335,8 +356,10 @@ class LessonItem extends StatelessWidget {
               Expanded(
                 child: SizedBox(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 10),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical:
+                            MediaQuery.of(context).size.height < 700 ? 3 : 10),
                     child: Column(
                       children: [
                         Row(
@@ -366,7 +389,10 @@ class LessonItem extends StatelessWidget {
                                 child: isFavor)
                           ],
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height < 700
+                                ? 3
+                                : 10),
                         Row(
                           children: [
                             Expanded(
@@ -374,8 +400,11 @@ class LessonItem extends StatelessWidget {
                               lesson.title!,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  fontSize: 18,
+                              style: TextStyle(
+                                  fontSize:
+                                      MediaQuery.of(context).size.height < 700
+                                          ? 15
+                                          : 18,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white),
                             )),
@@ -387,10 +416,16 @@ class LessonItem extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 lesson.description!,
-                                maxLines: 2,
+                                maxLines:
+                                    MediaQuery.of(context).size.height < 700
+                                        ? 1
+                                        : 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height < 700
+                                            ? 11
+                                            : 14,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white.withOpacity(0.5)),
                               ),
