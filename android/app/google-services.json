@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "886225151999",
+    "project_id": "quotex-14e6e",
+    "storage_bucket": "quotex-14e6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886225151999:android:3d18df89c75848e08669ca",
+        "android_client_info": {
+          "package_name": "com.example.quotex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0GB12J7t159NA4QwF0NZJWDBUsf7H3EU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
