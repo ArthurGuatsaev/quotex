@@ -36,7 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   device_info_plus: ^9.1.0
   dio: ^5.3.3
-  easy_localization: ^3.0.3
   equatable: ^2.0.5
   firebase_analytics: ^10.7.0
   firebase_auth: ^4.14.0
