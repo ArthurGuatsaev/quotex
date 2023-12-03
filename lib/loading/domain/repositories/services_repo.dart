@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:amplitude_flutter/amplitude.dart';
 import 'package:apphud/apphud.dart';
-import 'package:dio/dio.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:quotex/loading/domain/model/loading_model.dart';
 
 class VServices {
@@ -27,28 +25,28 @@ class VServices {
     controller.add(VLoading.amplitude);
   }
 
-  Future<void> initOneSignal(
-      {required StreamController<VLoading> controller}) async {
-    await getReadyNotificationSystem();
-    OneSignal.initialize("");
-    controller.add(VLoading.onesignal);
-  }
+  // Future<void> initOneSignal(
+  //     {required StreamController<VLoading> controller}) async {
+  //   await getReadyNotificationSystem();
+  //   OneSignal.initialize("");
+  //   controller.add(VLoading.onesignal);
+  // }
 
-  Future<void> getReadyNotificationSystem() async {
-    try {
-      const url = '';
-      final dio = Dio();
-      final response = await dio.get(url);
-      if (response.statusCode == 200) {
-        print('ok');
-        print(response.data['result']);
-      } else {}
-    } catch (e) {
-      print(e);
-    }
-  }
+  // Future<void> getReadyNotificationSystem() async {
+  //   try {
+  //     const url = '';
+  //     final dio = Dio();
+  //     final response = await dio.get(url);
+  //     if (response.statusCode == 200) {
+  //       print('ok');
+  //       print(response.data['result']);
+  //     } else {}
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
-  Future<void> logAmplitude() async {
-    await Amplitude.getInstance().logEvent('did_show_main_screen');
-  }
+  // Future<void> logAmplitude() async {
+  //   await Amplitude.getInstance().logEvent('did_show_main_screen');
+  // }
 }
