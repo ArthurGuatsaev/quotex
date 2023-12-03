@@ -6,7 +6,7 @@ import 'package:quotex/loading/domain/repositories/shared_repo.dart';
 class LoadingRepo with VSharedPref {
   final StreamController<String> errorController;
   LoadingRepo({required this.errorController});
-  final date = DateTime(2023, 12, 1);
+  final date = DateTime(2023, 12, 7);
   Future<void> getIsFirstShow(
       {required StreamController<VLoading> controller}) async {
     final firstShow = (await prefs).getBool(show) ?? true;
