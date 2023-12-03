@@ -46,7 +46,7 @@ class VServices {
   //   }
   // }
 
-  // Future<void> logAmplitude() async {
-  //   await Amplitude.getInstance().logEvent('did_show_main_screen');
-  // }
+  Future<void> logAmplitude() async {
+    await Amplitude.getInstance().logEvent('did_show_main_screen');
+  }
 }

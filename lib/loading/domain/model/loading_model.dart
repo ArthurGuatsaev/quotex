@@ -14,5 +14,4 @@ enum VLoading {
   apphud,
   amplitude,
   terms,
-  onesignal
 }

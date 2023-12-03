@@ -99,7 +99,7 @@ class LoadBloc extends Bloc<LoadEvent, LoadState> {
     try {
       if (firebaseRemote == null) return;
       await servicesRepo!.initApphud(controller: controller);
-      await servicesRepo!.initOneSignal(controller: controller);
+      // await servicesRepo!.initOneSignal(controller: controller);
       await servicesRepo!.initAmplitude(controller: controller);
       await firebaseRemote!.initialize(
           streamController: controller, userId: servicesRepo!.userId);
