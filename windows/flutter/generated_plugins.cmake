@@ -4,7 +4,6 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   battery_plus
-  file_selector_windows
   firebase_auth
   firebase_core
   isar_flutter_libs
