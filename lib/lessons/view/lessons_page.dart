@@ -64,7 +64,7 @@ class LessonsPage extends StatelessWidget {
                         : SizedBox(
                             height: MediaQuery.of(context).size.height < 700
                                 ? MediaQuery.of(context).size.height * 0.4
-                                : MediaQuery.of(context).size.height * 0.35,
+                                : MediaQuery.of(context).size.height * 0.36,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -345,13 +345,15 @@ class LessonItem extends StatelessWidget {
             children: [
               SizedBox(
                 height: MediaQuery.of(context).size.height < 700
-                    ? height * 0.55
-                    : height * 0.55,
-                child: Image.network(
-                  lesson.image!,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.fitWidth,
-                ),
+                    ? height * 0.52
+                    : height * 0.52,
+                child: lesson.image == null
+                    ? const SizedBox()
+                    : Image.asset(
+                        lesson.image!,
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.fitWidth,
+                      ),
               ),
               Expanded(
                 child: SizedBox(
@@ -359,7 +361,7 @@ class LessonItem extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: 12,
                         vertical:
-                            MediaQuery.of(context).size.height < 700 ? 3 : 10),
+                            MediaQuery.of(context).size.height < 700 ? 3 : 7),
                     child: Column(
                       children: [
                         Row(

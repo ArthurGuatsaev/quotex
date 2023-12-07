@@ -53,7 +53,7 @@ class LessonRead extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   lesson.image != null
-                      ? Image.network(lesson.image!)
+                      ? Image.asset(lesson.image!)
                       : const SizedBox.shrink(),
                   const SizedBox(height: 10),
                   Row(

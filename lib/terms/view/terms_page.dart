@@ -336,7 +336,6 @@ class BottomRow extends StatelessWidget {
         builder: (context, state) {
           if (state.model.activeTerms.isEmpty) return const SizedBox();
           final term = state.model.lastTerms;
-          print(term.name);
           return Row(
             children: [
               GestureDetector(

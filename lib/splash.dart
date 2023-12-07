@@ -62,8 +62,8 @@ class _SplashPageState extends State<SplashPage> {
                     buildWhen: (previous, current) =>
                         previous.loadingList != current.loadingList,
                     builder: (context, state) {
-                      loadProgress = (width / (VLoading.values.length - 3)) *
-                          (state.loadingList.length + 0.8);
+                      loadProgress =
+                          (width / 3) * (state.loadingList.length + 0.8);
                       return AnimatedContainer(
                         duration: const Duration(milliseconds: 250),
                         width: loadProgress,

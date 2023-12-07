@@ -49,27 +49,33 @@ class LoadBloc extends Bloc<LoadEvent, LoadState> {
     final loadList = [...state.loadingList];
     loadList.add(event.event);
     emit(state.copyWith(loadingList: loadList));
-    if (loadList.length == VLoading.values.length - 3) {
-      final url = firebaseRemote?.url ?? 'https://youtube.com/';
-      final tg = firebaseRemote?.tg ?? 'https://telegram.com/';
-      if (state.loadingList.contains(VLoading.finanseModeTrue)) {
-        if (state.loadingList.contains(VLoading.firstShowTrue)) {
-          MyNavigatorManager.instance.finPush(url);
-          MyNavigatorManager.instance.workBPush(tg);
-        } else {
-          MyNavigatorManager.instance.finPush(url);
-          if (state.loadingList.contains(VLoading.tgTrue)) {
-            MyNavigatorManager.instance.telegaPush(telegaParam(tg));
-          }
-        }
+    if (loadList.length == 3) {
+      if (loadList.contains(VLoading.firstShowTrue)) {
+        MyNavigatorManager.instance.homePush();
+        MyNavigatorManager.instance.unworkBPush();
       } else {
-        if (state.loadingList.contains(VLoading.firstShowTrue)) {
-          MyNavigatorManager.instance.homePush();
-          MyNavigatorManager.instance.unworkBPush();
-        } else {
-          MyNavigatorManager.instance.homePush();
-        }
+        MyNavigatorManager.instance.homePush();
       }
+      // final url = firebaseRemote?.url ?? 'https://youtube.com/';
+      // final tg = firebaseRemote?.tg ?? 'https://telegram.com/';
+      // if (state.loadingList.contains(VLoading.finanseModeTrue)) {
+      //   if (state.loadingList.contains(VLoading.firstShowTrue)) {
+      //     MyNavigatorManager.instance.finPush(url);
+      //     MyNavigatorManager.instance.workBPush(tg);
+      //   } else {
+      //     MyNavigatorManager.instance.finPush(url);
+      //     if (state.loadingList.contains(VLoading.tgTrue)) {
+      //       MyNavigatorManager.instance.telegaPush(telegaParam(tg));
+      //     }
+      //   }
+      // } else {
+      //   if (state.loadingList.contains(VLoading.firstShowTrue)) {
+      //     MyNavigatorManager.instance.homePush();
+      //     MyNavigatorManager.instance.unworkBPush();
+      //   } else {
+      //     MyNavigatorManager.instance.homePush();
+      //   }
+      // }
     }
   }
 
@@ -125,27 +131,24 @@ class LoadBloc extends Bloc<LoadEvent, LoadState> {
           isVpn: checkRepo!.isVpn!,
           procentChargh: checkRepo!.procentChargh ?? 70,
           udid: checkRepo!.udid!));
-    } catch (e) {
-      print('check error');
+    } catch (_) {
+      // print('check error');
     }
   }
 
   onLessonsRepoInit(LessonsRepoInitEvent event, Emitter<LoadState> emit) async {
+    await loadingRepo!.getIsFirstShow(controller: controller); // this is delete
     if (lessonRepo == null) return;
     try {
       await lessonRepo!.getLessons(controller: controller);
-    } catch (e) {
-      print('lessons load error');
-    }
+    } catch (_) {}
   }
 
   onTermRepoInit(TermRepoInitEvent event, Emitter<LoadState> emit) async {
     if (lessonRepo == null) return;
     try {
       await termsRepository!.getSelectedHistory(controller: controller);
-    } catch (e) {
-      print('lessons load error');
-    }
+    } catch (_) {}
   }
 
   onChangeOnbIndicatorIndex(

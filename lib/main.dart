@@ -57,7 +57,7 @@ void main() async {
       checkRepo: checkRepo,
       firebaseRemote: firebaseRemote,
       termsRepository: termsRepository)
-    ..add(FirebaseRemoteInitEvent())
+    // ..add(FirebaseRemoteInitEvent())
     ..add(TermRepoInitEvent())
     ..add(LessonsRepoInitEvent());
 

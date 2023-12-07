@@ -43,7 +43,6 @@ class AchievPage extends StatelessWidget {
             buildWhen: (previous, current) => previous.count != current.count,
             builder: (context, countState) {
               final count = countState.count;
-              print(count);
               return ListView(
                 children: [
                   AchievItem(
