@@ -229,6 +229,50 @@ final stocksInitial = [
     wrongDescriptionThree: 'Broker',
     wrongDescriptionTwo: 'ETF',
   ),
+  TermsModel(
+    category: 'stocks',
+    id: 107,
+    isFavorite: false,
+    name: 'Stock Portfolio',
+    rightDescription:
+        '... is an individual’s collection of investments, including stocks, bonds, mutual funds, and other financial assets. While a portfolio refers to all of your investments, they might not be contained in one single account',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'ETF',
+  ),
+  TermsModel(
+    category: 'stocks',
+    id: 108,
+    isFavorite: false,
+    name: 'Nasdaq',
+    rightDescription:
+        '... is an electronic exchange where investors can buy and sell stocks through an automated network of computers. It’s the second-largest stock exchange in the world, following the NYSE',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'ETF',
+  ),
+  TermsModel(
+    category: 'stocks',
+    id: 109,
+    isFavorite: false,
+    name: 'Order Imbalance',
+    rightDescription:
+        '... occurs when orders of one type of stock aren’t offset by opposite orders, resulting in an excess of orders for that specific stock and sometimes volatile price changes',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'ETF',
+  ),
+  TermsModel(
+    category: 'stocks',
+    id: 110,
+    isFavorite: false,
+    name: 'Outstanding Shares',
+    rightDescription:
+        '... refers to the total number of a company’s shares that have been issued to shareholders, including restricted shares',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'ETF',
+  ),
 ];
 
 final readingChartsInitial = [
@@ -286,5 +330,227 @@ final readingChartsInitial = [
     wrongDescriptionOne: 'Stock Split',
     wrongDescriptionThree: 'Broker',
     wrongDescriptionTwo: 'Yield',
+  ),
+  TermsModel(
+    category: 'readingCharts',
+    id: 205,
+    isFavorite: false,
+    name: 'Outstanding Shares',
+    rightDescription:
+        '... refers to the total number of a company’s shares that have been issued to shareholders, including restricted shares',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'ETF',
+  ),
+  TermsModel(
+    category: 'readingCharts',
+    id: 206,
+    isFavorite: false,
+    name: 'P/E Ratio',
+    rightDescription:
+        'Used to value a company, the ..., or price-earnings ratio, is the ratio of a company’s share price to the company’s earnings per share',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Going Long',
+    wrongDescriptionTwo: 'Stocks',
+  ),
+  TermsModel(
+    category: 'readingCharts',
+    id: 207,
+    isFavorite: false,
+    name: 'Volume',
+    rightDescription:
+        '... is a measure of how much a certain stock or other investment has been traded over a certain period of time.',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Yield',
+    wrongDescriptionTwo: 'Time Horizon',
+  ),
+  TermsModel(
+    category: 'readingCharts',
+    id: 208,
+    isFavorite: false,
+    name: 'Preferred Stock',
+    rightDescription:
+        '... is a type of stock that combines characteristics of both common stock and bonds.',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'Volume',
+  ),
+  TermsModel(
+    category: 'readingCharts',
+    id: 209,
+    isFavorite: false,
+    name: 'Sector',
+    rightDescription:
+        'The stock market includes shares from thousands of different companies, which are broken into 11 different sectors. ... is a group of companies with similar business products, services, or characteristics.',
+    wrongDescriptionOne: 'Stock Split',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'Yield',
+  ),
+  TermsModel(
+    category: 'readingCharts',
+    id: 210,
+    isFavorite: false,
+    name: 'Stock Option',
+    rightDescription:
+        '... is a contract that gives an investor the right to purchase or sell a specific number of stock shares at a predetermined price within a specified time period',
+    wrongDescriptionOne: 'Stock Split',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'Yield',
+  ),
+];
+
+final base = [
+  TermsModel()
+    ..id = 0
+    ..category = 'base'
+    ..isFavorite = false
+    ..name = 'Broker'
+    ..rightDescription =
+        'This is the entity that lets you buy and sell investments for you. Usually, you pay a fee for this service. There are also plenty of online discount brokers, where you often pay a flat commission per trade'
+    ..wrongDescriptionOne = 'Monew Market'
+    ..wrongDescriptionTwo = 'Traditional IRA'
+    ..wrongDescriptionThree = 'Bull Market',
+  TermsModel(
+    id: 1,
+    category: 'base',
+    isFavorite: false,
+    name: 'Brokerage Account',
+    rightDescription:
+        'A brokerage account is created by a licensed brokerage firm, that allows an investor to add funds and then the investor can place investment orders. The investor owns the assets contained in the brokerage account but will usually have to claim any taxable income from capital gains',
+    wrongDescriptionOne: 'Broker',
+    wrongDescriptionTwo: 'Real Estate',
+    wrongDescriptionThree: 'Bear Market',
+  ),
+  TermsModel(
+    id: 2,
+    category: 'base',
+    isFavorite: false,
+    name: 'Money Market',
+    rightDescription:
+        'A money market account is an interest-bearing account that will typically pay a higher interest rate than a bank savings account would. I actually store a significant portion of my savings in this for a much better monthly return, than the 0.001% interest of my bank',
+    wrongDescriptionOne: 'Broker',
+    wrongDescriptionTwo: 'Brokerage Account',
+    wrongDescriptionThree: 'Bear Market',
+  ),
+  TermsModel(
+    id: 3,
+    category: 'base',
+    isFavorite: false,
+    name: 'Traditional IRA',
+    rightDescription:
+        'A traditional IRA is an individual retirement account that offers tax advantages to savers. You won’t pay taxes upfront, but you will when you withdraw during retirement. Traditional IRAs offer tax deductions of up to \$5,500 a year (\$6,500 for those 50 and older)',
+    wrongDescriptionOne: 'Money Market',
+    wrongDescriptionTwo: 'Brokerage Account',
+    wrongDescriptionThree: 'Roth IRA',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 100,
+    isFavorite: false,
+    name: 'Arbitrage',
+    rightDescription:
+        '... refers to purchasing an asset from one market and selling it to another market where the selling price is higher than what you paid for it, resulting in profit. ',
+    wrongDescriptionOne: 'Ask',
+    wrongDescriptionThree: 'Asset Allocation',
+    wrongDescriptionTwo: 'Asset Classes',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 101,
+    isFavorite: false,
+    name: 'Ask',
+    rightDescription:
+        '... is the selling price that a trader offers for their shares.',
+    wrongDescriptionOne: 'Bear Market',
+    wrongDescriptionThree: 'Asset Allocation',
+    wrongDescriptionTwo: 'Arbitrage',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 102,
+    isFavorite: false,
+    name: 'Asset Allocation',
+    rightDescription:
+        '... is an investment strategy that aims to balance risk and reward by dividing a certain percentage of investments—like stocks, bonds, real estate, cash, etc.—across different assets in an investment portfolio',
+    wrongDescriptionOne: 'Ask',
+    wrongDescriptionThree: 'Bear Market',
+    wrongDescriptionTwo: 'Asset Classes',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 103,
+    isFavorite: false,
+    name: 'Asset Classes',
+    rightDescription:
+        '... are categories of assets, such as stocks, bonds, real estate, or cash',
+    wrongDescriptionOne: 'Ask',
+    wrongDescriptionThree: 'Asset Allocation',
+    wrongDescriptionTwo: 'Arbitrage',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 200,
+    isFavorite: false,
+    name: 'Going Long',
+    rightDescription:
+        '... refers to the act of buying stock shares with the expectation that the asset’s price will rise, resulting in a profit',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'ETF',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 201,
+    isFavorite: false,
+    name: 'Going Short',
+    rightDescription:
+        '... the opposite of going long—refers to the act of selling stock shares with the expectation that the asset’s price will fall.',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Going Long',
+    wrongDescriptionTwo: 'Stocks',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 202,
+    isFavorite: false,
+    name: 'Volume',
+    rightDescription:
+        '... is a measure of how much a certain stock or other investment has been traded over a certain period of time.',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Yield',
+    wrongDescriptionTwo: 'Time Horizon',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 203,
+    isFavorite: false,
+    name: 'Time Horizon',
+    rightDescription:
+        '... refers to the period of time an investor expects to hold an investment, which will vary based on personal investment goals and strategies',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'Volume',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 204,
+    isFavorite: false,
+    name: '52-week Range',
+    rightDescription:
+        '... is a technical indicator that measures the lowest and highest price of a stock traded during a 52-week period. Traders use this measure to analyze current stock prices and predict its future movements.',
+    wrongDescriptionOne: 'Stock Split',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'Yield',
+  ),
+  TermsModel(
+    category: 'base',
+    id: 205,
+    isFavorite: false,
+    name: 'Outstanding Shares',
+    rightDescription:
+        '... refers to the total number of a company’s shares that have been issued to shareholders, including restricted shares',
+    wrongDescriptionOne: 'Blue-Chip Stocks',
+    wrongDescriptionThree: 'Broker',
+    wrongDescriptionTwo: 'ETF',
   ),
 ];

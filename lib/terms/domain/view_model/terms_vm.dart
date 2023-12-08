@@ -6,6 +6,7 @@ class TermsViewModel extends Equatable {
   final List<TermsModel> trading;
   final List<TermsModel> readingCharts;
   final List<TermsModel> stocks;
+  final List<TermsModel> base;
   final List<TermsModel> activeTerms;
   final List<TermsModel> fogotenTerms;
   final List<TermsModel> favoriteTerms;
@@ -14,6 +15,7 @@ class TermsViewModel extends Equatable {
   final TermsModel lastTerms;
   const TermsViewModel(
       {this.trading = const [],
+      this.base = const [],
       required this.testModel,
       this.readingCharts = const [],
       this.fogotenTerms = const [],
@@ -37,6 +39,7 @@ class TermsViewModel extends Equatable {
     List<TermsModel>? trading,
     List<TermsModel>? fogotenTerms,
     List<TermsModel>? readingCharts,
+    List<TermsModel>? base,
     List<TermsModel>? stocks,
     List<TermsModel>? activeTerms,
     List<TermsModel>? favoriteTerms,
@@ -47,6 +50,7 @@ class TermsViewModel extends Equatable {
     return TermsViewModel(
       testModel: testModel ?? this.testModel,
       trading: trading ?? this.trading,
+      base: base ?? this.base,
       fogotenTerms: fogotenTerms ?? this.fogotenTerms,
       readingCharts: readingCharts ?? this.readingCharts,
       stocks: stocks ?? this.stocks,
@@ -68,6 +72,9 @@ class TermsViewModel extends Equatable {
       case 'stocks':
         stocks.shuffle();
         return [...stocks];
+      case 'base':
+        base.shuffle();
+        return [...base];
       default:
         return [...trading];
     }
@@ -75,7 +82,6 @@ class TermsViewModel extends Equatable {
 
   TermsViewModel chooseActive(String category) {
     final terms = determine(category);
-    print(terms.first.name);
     return copyWith(
         fogotenTerms: [],
         activeTerms: terms,
@@ -134,7 +140,8 @@ class TermsViewModel extends Equatable {
     return {
       'Trading': trading.length,
       'Stocks': stocks.length,
-      'Reading charts': readingCharts.length
+      'Reading charts': readingCharts.length,
+      'Base': base.length,
     };
   }
 }

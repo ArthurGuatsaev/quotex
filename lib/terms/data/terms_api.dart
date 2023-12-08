@@ -6,6 +6,7 @@ class TermsApiClient {
   static TermsViewModel getTerms() {
     return TermsViewModel(
         trading: trading,
+        base: base,
         readingCharts: readingChartsInitial,
         stocks: stocksInitial,
         activeTerms: [...trading],
