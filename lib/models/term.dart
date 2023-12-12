@@ -4,7 +4,6 @@ class Terms {
   final String name;
   final String rightDescription;
   final String wrongDescription;
-
   Terms(
       {required this.name,
       required this.rightDescription,

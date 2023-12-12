@@ -31,7 +31,7 @@ class LessonsPage extends StatelessWidget {
                 child: GestureDetector(
                     onTap: () => context
                         .read<HomeBloc>()
-                        .add(const ChangeHomeIndexEvent(homeIndex: 5)),
+                        .add(const ChangeHomeIndexEvent(homeIndex: 7)),
                     child: const Icon(Icons.favorite_border,
                         color: Colors.white, size: 22)),
               ),

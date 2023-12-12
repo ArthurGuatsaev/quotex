@@ -40,6 +40,7 @@ class TermsBloc extends Bloc<TermsEvent, TermsState> {
     on<CountIncrementEvent>(countIncrement);
     on<ChangeActiveTermsEvent>(onChangeActiveTerms);
     on<SkipQuestionEvent>(onSkipQuestion);
+    on<AddCustomTermsDate>(onAddCustomTermsDate);
   }
   onChangeActiveTerms(ChangeActiveTermsEvent event, Emitter<TermsState> emit) {
     final model = state.model.chooseActive(event.category);
@@ -47,13 +48,25 @@ class TermsBloc extends Bloc<TermsEvent, TermsState> {
   }
 
   onGetTermsModel(GetTermsModelEvent event, Emitter<TermsState> emit) {
-    final model = repository.getModel();
+    final custom =
+        repository.terms?.where((e) => e.category == 'custom').toList() ?? [];
+    final model = repository.getModel(custom);
     emit(state.copyWith(model: model));
   }
 
   onMixedTerms(MixedTermsEvent event, Emitter<TermsState> emit) {
     final model = state.model.mixed();
     emit(state.copyWith(model: model));
+  }
+
+  onAddCustomTermsDate(AddCustomTermsDate event, Emitter<TermsState> emit) {
+    final termForDate = state.model.custom
+        .where(
+          (element) =>
+              element.category == 'custom' && element.date == event.date,
+        )
+        .toList();
+    emit(state.copyWith(date: event.date, termForDate: termForDate));
   }
 
   onRememberedTerm(RememberedTermEvent event, Emitter<TermsState> emit) {
@@ -84,15 +97,32 @@ class TermsBloc extends Bloc<TermsEvent, TermsState> {
   }
 
   onGetHistoryTermFirst(GetHistoryFirstEvent event, Emitter<TermsState> emit) {
-    final history = repository.terms ?? [];
-    final model = state.model.favorite(history);
-    emit(state.copyWith(model: model));
+    final history =
+        repository.terms?.where((e) => e.isFavorite!).toList() ?? [];
+    final custom =
+        repository.terms?.where((e) => e.category! == 'custom').toList() ?? [];
+    final model = state.model.favorite(history: history, custom: custom);
+    final termForDate = custom
+        .where(
+          (element) => element.date == state.date,
+        )
+        .toList();
+    emit(state.copyWith(model: model, termForDate: termForDate));
   }
 
   onGetHistoryTerm(GetHistoryTermEvent event, Emitter<TermsState> emit) async {
     final history = await repository.getSelectedHistory();
-    final model = state.model.favorite(history);
-    emit(state.copyWith(model: model));
+    final model = state.model.favorite(
+        history: history.where((element) => element.isFavorite!).toList(),
+        custom:
+            history.where((element) => element.category! == 'custom').toList());
+    final termForDate = history
+        .where(
+          (element) =>
+              element.category == 'custom' && element.date == state.date,
+        )
+        .toList();
+    emit(state.copyWith(model: model, termForDate: termForDate));
   }
 
   onChangeTestTime(ChangeTestTimeEvent event, Emitter<TermsState> emit) async {

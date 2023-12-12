@@ -346,9 +346,8 @@ class BottomRow extends StatelessWidget {
                         .read<TermsBloc>()
                         .add(RemoveFavoriteEvent(term: term));
                   } else {
-                    context
-                        .read<TermsBloc>()
-                        .add(AddFavorTermEvent(term: term));
+                    context.read<TermsBloc>().add(AddFavorTermEvent(
+                        term: term.copyWith(isFavorite: true)));
                   }
                 },
                 child: Row(
@@ -473,6 +472,10 @@ extension on int {
         return 'stocks';
       case 2:
         return 'readingCharts';
+      case 3:
+        return 'base';
+      case 4:
+        return 'custom';
       default:
         return 'trading';
     }

@@ -18,6 +18,8 @@ import 'package:quotex/loading/domain/repositories/remote_confige.dart';
 import 'package:quotex/loading/domain/repositories/services_repo.dart';
 import 'package:quotex/loading/view/bloc/load_bloc.dart';
 import 'package:quotex/nav_manager.dart';
+import 'package:quotex/podcast/domain/bloc/podcast_bloc.dart';
+import 'package:quotex/podcast/domain/repository/podcast_repository.dart';
 import 'package:quotex/splash.dart';
 import 'package:quotex/terms/domain/bloc/term_bloc.dart';
 import 'package:quotex/terms/domain/model/terms_model.dart';
@@ -39,6 +41,8 @@ void main() async {
   final error = ErrorBloc(errorController: errorController);
   final VServices services = VServices();
   final MyCheckRepo checkRepo = MyCheckRepo(errorController: errorController);
+  final PodcastRepository podcastRepository =
+      PodcastRepository(errorController: errorController);
   final LoadingRepo onbordRepo = LoadingRepo(errorController: errorController);
   final VTermsRepository termsRepository =
       VTermsRepository(isar: isar, pointController: pointController);
@@ -54,16 +58,19 @@ void main() async {
       servicesRepo: services,
       loadingRepo: onbordRepo,
       lessonRepo: lessonRepo,
+      podcastRepository: podcastRepository,
       checkRepo: checkRepo,
       firebaseRemote: firebaseRemote,
       termsRepository: termsRepository)
     // ..add(FirebaseRemoteInitEvent())
     ..add(TermRepoInitEvent())
+    ..add(PodcastRepoInitEvent())
     ..add(LessonsRepoInitEvent());
 
   runApp(
     MyApp(
       navi: navi,
+      podcastRepository: podcastRepository,
       load: load,
       lesson: lesson,
       checkRepo: checkRepo,
@@ -82,6 +89,7 @@ class MyApp extends StatelessWidget {
   final LessonBloc lesson;
   final FirebaseRemote firebaseRemote;
   final LessonsRepo lessonRepo;
+  final PodcastRepository podcastRepository;
   final MyNavigatorManager navi;
   final LoadBloc load;
   final ErrorBloc error;
@@ -91,6 +99,7 @@ class MyApp extends StatelessWidget {
       required this.navi,
       required this.load,
       required this.lesson,
+      required this.podcastRepository,
       required this.termsRepository,
       required this.error,
       required this.checkRepo,
@@ -126,11 +135,17 @@ class MyApp extends StatelessWidget {
           BlocProvider<LessonBloc>(
             create: (context) => lesson..add(GetLessonsEvent()),
           ),
+          BlocProvider<PodcastBloc>(
+            create: (context) => PodcastBloc(podRepo: podcastRepository),
+          ),
           BlocProvider<TermsBloc>(
             lazy: true,
             create: (context) => TermsBloc(repository: termsRepository)
               ..add(GetTermsModelEvent())
               ..add(GetTestCountEvent())
+              ..add(AddCustomTermsDate(
+                  date: DateTime(DateTime.now().year, DateTime.now().month,
+                      DateTime.now().day)))
               ..add(GetHistoryFirstEvent()),
           ),
           BlocProvider<HomeBloc>(

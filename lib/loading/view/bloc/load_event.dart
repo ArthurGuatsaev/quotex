@@ -37,6 +37,8 @@ class LessonsRepoInitEvent extends LoadEvent {}
 
 class TermRepoInitEvent extends LoadEvent {}
 
+class PodcastRepoInitEvent extends LoadEvent {}
+
 class LoadingProgressEvent extends LoadEvent {
   final VLoading event;
   LoadingProgressEvent({required this.event});

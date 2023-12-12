@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quotex/loading/domain/model/loading_model.dart';
 import 'package:quotex/loading/view/bloc/load_bloc.dart';
 
 class SplashPage extends StatefulWidget {

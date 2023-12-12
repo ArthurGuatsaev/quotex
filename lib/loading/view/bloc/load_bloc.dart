@@ -7,8 +7,8 @@ import 'package:quotex/loading/domain/repositories/check_repo.dart';
 import 'package:quotex/loading/domain/repositories/loading_repo.dart';
 import 'package:quotex/loading/domain/repositories/remote_confige.dart';
 import 'package:quotex/loading/domain/repositories/services_repo.dart';
-import 'package:quotex/loading/view/ui/onboard/widgets/teleg_board.dart';
 import 'package:quotex/nav_manager.dart';
+import 'package:quotex/podcast/domain/repository/podcast_repository.dart';
 import 'package:quotex/terms/domain/repo/terms_repository.dart';
 
 part 'load_event.dart';
@@ -22,11 +22,13 @@ class LoadBloc extends Bloc<LoadEvent, LoadState> {
   LessonsRepo? lessonRepo;
   VServices? servicesRepo;
   VTermsRepository? termsRepository;
+  PodcastRepository? podcastRepository;
   LoadBloc({
     this.loadingRepo,
     this.firebaseRemote,
     this.checkRepo,
     this.servicesRepo,
+    this.podcastRepository,
     this.termsRepository,
     this.lessonRepo,
   }) : super(LoadState()) {
@@ -43,6 +45,7 @@ class LoadBloc extends Bloc<LoadEvent, LoadState> {
     on<LoadingProgressEvent>(onLoadingProgressEvent);
     on<ChangeOnbIndicatorEvent>(onChangeOnbIndicatorIndex);
     on<TermRepoInitEvent>(onTermRepoInit);
+    on<PodcastRepoInitEvent>(onPodcastRepoInit);
   }
   onLoadingProgressEvent(
       LoadingProgressEvent event, Emitter<LoadState> emit) async {
@@ -148,6 +151,13 @@ class LoadBloc extends Bloc<LoadEvent, LoadState> {
     if (lessonRepo == null) return;
     try {
       await termsRepository!.getSelectedHistory(controller: controller);
+    } catch (_) {}
+  }
+
+  onPodcastRepoInit(PodcastRepoInitEvent event, Emitter<LoadState> emit) async {
+    if (podcastRepository == null) return;
+    try {
+      await podcastRepository!.getPodcast(controller: controller);
     } catch (_) {}
   }
 

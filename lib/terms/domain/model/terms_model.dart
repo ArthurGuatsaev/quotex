@@ -11,6 +11,7 @@ class TermsModel {
     this.wrongDescriptionTwo,
     this.wrongDescriptionThree,
     this.isFavorite,
+    this.date,
     this.category,
   });
   Id? id = Isar.autoIncrement;
@@ -21,10 +22,12 @@ class TermsModel {
   String? wrongDescriptionThree;
   bool? isFavorite;
   String? category;
+  DateTime? date;
 
   TermsModel copyWith({
     int? id,
     String? name,
+    DateTime? date,
     String? rightDescription,
     String? wrongDescriptionOne,
     String? wrongDescriptionTwo,
@@ -35,6 +38,7 @@ class TermsModel {
     return TermsModel(
       id: id ?? this.id,
       name: name ?? this.name,
+      date: date ?? this.date,
       rightDescription: rightDescription ?? this.rightDescription,
       wrongDescriptionOne: wrongDescriptionOne ?? this.wrongDescriptionOne,
       wrongDescriptionTwo: wrongDescriptionTwo ?? this.wrongDescriptionTwo,
@@ -45,6 +49,7 @@ class TermsModel {
     );
   }
 
+  @ignore
   List<String> get answears {
     final list = [
       name!,

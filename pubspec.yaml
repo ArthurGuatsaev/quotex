@@ -30,8 +30,10 @@ environment:
 dependencies:
   amplitude_flutter: ^3.16.1
   apphud: ^2.3.2
+  audioplayers: ^5.2.1
   battery_plus: ^4.1.0
   bloc: ^8.1.2
+  calendar_timeline: ^1.1.2
   check_vpn_connection: ^0.0.2
   cupertino_icons: ^1.0.2
   device_info_plus: ^9.1.0
@@ -51,6 +53,11 @@ dependencies:
   isar: ^3.1.0+1
   isar_flutter_libs: ^3.1.0+1
   isar_generator: ^3.1.0+1
+  modal_bottom_sheet:
+    git:
+      url: https://github.com/followthemoney1/modal_bottom_sheet.git
+      ref: main
+      path: modal_bottom_sheet
   path_provider: ^2.1.1
   permission_handler: ^11.0.1
   share_plus: ^7.2.1

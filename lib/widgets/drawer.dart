@@ -64,13 +64,33 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           MenuItem(
+            title: 'Podcasts',
+            image: 'assets/images/podcast.png',
+            func: () {
+              context
+                  .read<HomeBloc>()
+                  .add(const ChangeHomeIndexEvent(homeIndex: 4));
+              context.findAncestorStateOfType<ScaffoldState>()!.closeDrawer();
+            },
+          ),
+          MenuItem(
+            title: 'Calendar',
+            image: 'assets/images/calend.png',
+            func: () {
+              context
+                  .read<HomeBloc>()
+                  .add(const ChangeHomeIndexEvent(homeIndex: 5));
+              context.findAncestorStateOfType<ScaffoldState>()!.closeDrawer();
+            },
+          ),
+          MenuItem(
             title: 'Settings',
             image: 'assets/images/settings.png',
             isD: false,
             func: () {
               context
                   .read<HomeBloc>()
-                  .add(const ChangeHomeIndexEvent(homeIndex: 4));
+                  .add(const ChangeHomeIndexEvent(homeIndex: 6));
               context.findAncestorStateOfType<ScaffoldState>()!.closeDrawer();
             },
           ),

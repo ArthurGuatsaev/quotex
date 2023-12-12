@@ -6,6 +6,7 @@ class TermsViewModel extends Equatable {
   final List<TermsModel> trading;
   final List<TermsModel> readingCharts;
   final List<TermsModel> stocks;
+  final List<TermsModel> custom;
   final List<TermsModel> base;
   final List<TermsModel> activeTerms;
   final List<TermsModel> fogotenTerms;
@@ -15,6 +16,7 @@ class TermsViewModel extends Equatable {
   final TermsModel lastTerms;
   const TermsViewModel(
       {this.trading = const [],
+      this.custom = const [],
       this.base = const [],
       required this.testModel,
       this.readingCharts = const [],
@@ -30,6 +32,7 @@ class TermsViewModel extends Equatable {
         readingCharts,
         stocks,
         activeTerms,
+        custom,
         lastTerms,
         status,
         favoriteTerms
@@ -37,6 +40,7 @@ class TermsViewModel extends Equatable {
 
   TermsViewModel copyWith({
     List<TermsModel>? trading,
+    List<TermsModel>? custom,
     List<TermsModel>? fogotenTerms,
     List<TermsModel>? readingCharts,
     List<TermsModel>? base,
@@ -51,6 +55,7 @@ class TermsViewModel extends Equatable {
       testModel: testModel ?? this.testModel,
       trading: trading ?? this.trading,
       base: base ?? this.base,
+      custom: custom ?? this.custom,
       fogotenTerms: fogotenTerms ?? this.fogotenTerms,
       readingCharts: readingCharts ?? this.readingCharts,
       stocks: stocks ?? this.stocks,
@@ -75,6 +80,9 @@ class TermsViewModel extends Equatable {
       case 'base':
         base.shuffle();
         return [...base];
+      case 'custom':
+        custom.shuffle();
+        return [...custom];
       default:
         return [...trading];
     }
@@ -85,7 +93,8 @@ class TermsViewModel extends Equatable {
     return copyWith(
         fogotenTerms: [],
         activeTerms: terms,
-        lastTerms: terms.first,
+        lastTerms:
+            terms.isNotEmpty ? terms.first : TermsModel(category: 'trading'),
         status: TermStadyStatus.start);
   }
 
@@ -132,8 +141,9 @@ class TermsViewModel extends Equatable {
         status: TermStadyStatus.initial);
   }
 
-  TermsViewModel favorite(List<TermsModel> history) {
-    return copyWith(favoriteTerms: history);
+  TermsViewModel favorite(
+      {required List<TermsModel> history, required List<TermsModel> custom}) {
+    return copyWith(favoriteTerms: history, custom: custom);
   }
 
   Map<String, int> get viewItemsList {
@@ -142,6 +152,7 @@ class TermsViewModel extends Equatable {
       'Stocks': stocks.length,
       'Reading charts': readingCharts.length,
       'Base': base.length,
+      'Custom': custom.length,
     };
   }
 }

@@ -4,6 +4,8 @@ import 'package:quotex/home/home_bloc.dart';
 import 'package:quotex/lessons/view/achiev_page.dart';
 import 'package:quotex/lessons/view/favor_lessons.dart';
 import 'package:quotex/lessons/view/lessons_page.dart';
+import 'package:quotex/pages/calendart.dart';
+import 'package:quotex/pages/podcasts.dart';
 import 'package:quotex/pages/setting.dart';
 import 'package:quotex/terms/view/favorite_page.dart';
 import 'package:quotex/terms/view/terms_page.dart';
@@ -40,6 +42,8 @@ class _HomePageState extends State<HomePage> {
             FavoritePage(),
             AchievPage(),
             LessonsPage(),
+            PodcastsPage(),
+            CalendarPage(),
             SettingPage(),
             FavorLessons(),
           ]);

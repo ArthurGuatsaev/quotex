@@ -14,4 +14,5 @@ enum VLoading {
   apphud,
   amplitude,
   terms,
+  podcast,
 }

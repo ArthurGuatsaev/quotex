@@ -15,15 +15,15 @@ class VTermsRepository with VSharedPrefLesson {
   List<TermsModel>? terms;
   int? count;
   VTermsRepository({required this.isar, required this.pointController});
-  TermsViewModel getModel() {
-    return TermsApiClient.getTerms();
+  TermsViewModel getModel(List<TermsModel> custom) {
+    return TermsApiClient.getTerms(custom);
   }
 
   Future<List<TermsModel>> getSelectedHistory(
       {StreamController<VLoading>? controller}) async {
     terms = await isar.termsModels.where().findAll();
     count = await getCount();
-    controller == null ? null : controller.add(VLoading.terms);
+    controller?.add(VLoading.terms);
     return terms ?? [];
   }
 

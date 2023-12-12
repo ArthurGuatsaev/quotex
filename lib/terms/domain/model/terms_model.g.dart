@@ -27,33 +27,38 @@ const TermsModelSchema = CollectionSchema(
       name: r'category',
       type: IsarType.string,
     ),
-    r'isFavorite': PropertySchema(
+    r'date': PropertySchema(
       id: 2,
+      name: r'date',
+      type: IsarType.dateTime,
+    ),
+    r'isFavorite': PropertySchema(
+      id: 3,
       name: r'isFavorite',
       type: IsarType.bool,
     ),
     r'name': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'name',
       type: IsarType.string,
     ),
     r'rightDescription': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'rightDescription',
       type: IsarType.string,
     ),
     r'wrongDescriptionOne': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'wrongDescriptionOne',
       type: IsarType.string,
     ),
     r'wrongDescriptionThree': PropertySchema(
-      id: 6,
+      id: 7,
       name: r'wrongDescriptionThree',
       type: IsarType.string,
     ),
     r'wrongDescriptionTwo': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'wrongDescriptionTwo',
       type: IsarType.string,
     )
@@ -132,12 +137,13 @@ void _termsModelSerialize(
 ) {
   writer.writeStringList(offsets[0], object.answears);
   writer.writeString(offsets[1], object.category);
-  writer.writeBool(offsets[2], object.isFavorite);
-  writer.writeString(offsets[3], object.name);
-  writer.writeString(offsets[4], object.rightDescription);
-  writer.writeString(offsets[5], object.wrongDescriptionOne);
-  writer.writeString(offsets[6], object.wrongDescriptionThree);
-  writer.writeString(offsets[7], object.wrongDescriptionTwo);
+  writer.writeDateTime(offsets[2], object.date);
+  writer.writeBool(offsets[3], object.isFavorite);
+  writer.writeString(offsets[4], object.name);
+  writer.writeString(offsets[5], object.rightDescription);
+  writer.writeString(offsets[6], object.wrongDescriptionOne);
+  writer.writeString(offsets[7], object.wrongDescriptionThree);
+  writer.writeString(offsets[8], object.wrongDescriptionTwo);
 }
 
 TermsModel _termsModelDeserialize(
@@ -148,13 +154,14 @@ TermsModel _termsModelDeserialize(
 ) {
   final object = TermsModel(
     category: reader.readStringOrNull(offsets[1]),
+    date: reader.readDateTimeOrNull(offsets[2]),
     id: id,
-    isFavorite: reader.readBoolOrNull(offsets[2]),
-    name: reader.readStringOrNull(offsets[3]),
-    rightDescription: reader.readStringOrNull(offsets[4]),
-    wrongDescriptionOne: reader.readStringOrNull(offsets[5]),
-    wrongDescriptionThree: reader.readStringOrNull(offsets[6]),
-    wrongDescriptionTwo: reader.readStringOrNull(offsets[7]),
+    isFavorite: reader.readBoolOrNull(offsets[3]),
+    name: reader.readStringOrNull(offsets[4]),
+    rightDescription: reader.readStringOrNull(offsets[5]),
+    wrongDescriptionOne: reader.readStringOrNull(offsets[6]),
+    wrongDescriptionThree: reader.readStringOrNull(offsets[7]),
+    wrongDescriptionTwo: reader.readStringOrNull(offsets[8]),
   );
   return object;
 }
@@ -171,9 +178,9 @@ P _termsModelDeserializeProp<P>(
     case 1:
       return (reader.readStringOrNull(offset)) as P;
     case 2:
-      return (reader.readBoolOrNull(offset)) as P;
+      return (reader.readDateTimeOrNull(offset)) as P;
     case 3:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readBoolOrNull(offset)) as P;
     case 4:
       return (reader.readStringOrNull(offset)) as P;
     case 5:
@@ -181,6 +188,8 @@ P _termsModelDeserializeProp<P>(
     case 6:
       return (reader.readStringOrNull(offset)) as P;
     case 7:
+      return (reader.readStringOrNull(offset)) as P;
+    case 8:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -650,6 +659,75 @@ extension TermsModelQueryFilter
       return query.addFilterCondition(FilterCondition.greaterThan(
         property: r'category',
         value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterFilterCondition> dateIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'date',
+      ));
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterFilterCondition> dateIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'date',
+      ));
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterFilterCondition> dateEqualTo(
+      DateTime? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'date',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterFilterCondition> dateGreaterThan(
+    DateTime? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'date',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterFilterCondition> dateLessThan(
+    DateTime? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'date',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterFilterCondition> dateBetween(
+    DateTime? lower,
+    DateTime? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'date',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
       ));
     });
   }
@@ -1535,6 +1613,18 @@ extension TermsModelQuerySortBy
     });
   }
 
+  QueryBuilder<TermsModel, TermsModel, QAfterSortBy> sortByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'date', Sort.asc);
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterSortBy> sortByDateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'date', Sort.desc);
+    });
+  }
+
   QueryBuilder<TermsModel, TermsModel, QAfterSortBy> sortByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isFavorite', Sort.asc);
@@ -1626,6 +1716,18 @@ extension TermsModelQuerySortThenBy
   QueryBuilder<TermsModel, TermsModel, QAfterSortBy> thenByCategoryDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'category', Sort.desc);
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterSortBy> thenByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'date', Sort.asc);
+    });
+  }
+
+  QueryBuilder<TermsModel, TermsModel, QAfterSortBy> thenByDateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'date', Sort.desc);
     });
   }
 
@@ -1736,6 +1838,12 @@ extension TermsModelQueryWhereDistinct
     });
   }
 
+  QueryBuilder<TermsModel, TermsModel, QDistinct> distinctByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'date');
+    });
+  }
+
   QueryBuilder<TermsModel, TermsModel, QDistinct> distinctByIsFavorite() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isFavorite');
@@ -1799,6 +1907,12 @@ extension TermsModelQueryProperty
   QueryBuilder<TermsModel, String?, QQueryOperations> categoryProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'category');
+    });
+  }
+
+  QueryBuilder<TermsModel, DateTime?, QQueryOperations> dateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'date');
     });
   }
 

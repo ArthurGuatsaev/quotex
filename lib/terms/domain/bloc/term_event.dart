@@ -56,6 +56,11 @@ class MixedTermsEvent extends TermsEvent {
   MixedTermsEvent({required this.category});
 }
 
+class AddCustomTermsDate extends TermsEvent {
+  final DateTime date;
+  AddCustomTermsDate({required this.date});
+}
+
 class ChangeTestTimeEvent extends TermsEvent {
   final int duration;
   ChangeTestTimeEvent({required this.duration});

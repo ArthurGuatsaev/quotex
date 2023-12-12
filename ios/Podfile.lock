@@ -9,6 +9,8 @@ PODS:
     - ApphudSDK (= 2.8.8)
     - Flutter
   - ApphudSDK (2.8.8)
+  - audioplayers_darwin (0.0.1):
+    - Flutter
   - battery_plus (1.0.0):
     - Flutter
   - device_info_plus (0.0.1):
@@ -158,6 +160,7 @@ PODS:
 DEPENDENCIES:
   - amplitude_flutter (from `.symlinks/plugins/amplitude_flutter/ios`)
   - apphud (from `.symlinks/plugins/apphud/ios`)
+  - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
   - battery_plus (from `.symlinks/plugins/battery_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
@@ -201,6 +204,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/amplitude_flutter/ios"
   apphud:
     :path: ".symlinks/plugins/apphud/ios"
+  audioplayers_darwin:
+    :path: ".symlinks/plugins/audioplayers_darwin/ios"
   battery_plus:
     :path: ".symlinks/plugins/battery_plus/ios"
   device_info_plus:
@@ -238,6 +243,7 @@ SPEC CHECKSUMS:
   AnalyticsConnector: a53214d38ae22734c6266106c0492b37832633a9
   apphud: 5ca6f25a0d8b9264a3f8a597f2d13f4a24941707
   ApphudSDK: ef62166ff111404f1fa01a4cd4552d266b778565
+  audioplayers_darwin: 877d9a4d06331c5c374595e46e16453ac7eafa40
   battery_plus: 091633b7f01cb33dfc4aeedb450816f4d33818fa
   device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
   Firebase: 414ad272f8d02dfbf12662a9d43f4bba9bec2a06
